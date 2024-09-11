@@ -7,6 +7,10 @@ const HTTP_PORT = process.env.PORT || 8080;
 // Array of strings
 let colours = ['Red', 'Green', 'Blue', 'Yellow', 'Aqua', 'Fuschia'];
 
+// function getAll(colours){
+//   return colours;
+// }
+
 // Add support for incoming JSON entities
 app.use(express.json());
 
@@ -17,12 +21,20 @@ app.get('/', (req, res) => {
 
 // Get all
 app.get('/api/items', (req, res) => {
-  res.json({ message: 'fetch all items' });
+  //res.json({ message: 'fetch all items' }); or
+  //res.json(colours); or
+  res.send(colours);
 });
 
 // Get one
 app.get('/api/items/:itemId', (req, res) => {
-  res.json({ message: `get user with identifier: ${req.params.itemId}` });
+  //res.json({ message: `get user with identifier: ${req.params.itemId}` });
+  const id = req.params.itemId;
+  if(colours.length<= id){
+    res.send('item not found');
+  }else{
+    res.send(colours[id]);
+  }
 });
 
 // Add new
