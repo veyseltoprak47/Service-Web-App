@@ -4,6 +4,9 @@ const path = require('path');
 const app = express();
 const HTTP_PORT = process.env.PORT || 8080;
 
+// Array of strings
+let colours = ['Red', 'Green', 'Blue', 'Yellow', 'Aqua', 'Fuschia'];
+
 // Add support for incoming JSON entities
 app.use(express.json());
 
